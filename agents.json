@@ -1,0 +1,140 @@
+{
+  "source": "Fid Data GenAI usecases.xlsx",
+  "sheet": "Sheet3",
+  "personas": [
+    "Data Engineer",
+    "Data modeller",
+    "Product Owner",
+    "Engineering Leader",
+    "Finops & Devops",
+    "Test Engineer"
+  ],
+  "agents": [
+    {
+      "name": "Triage Agent",
+      "personas": [
+        "Product Owner"
+      ],
+      "description": "Checks if the raised defect is an issue / feature and lists the impacted objects and / or updates the story with the analysis."
+    },
+    {
+      "name": "Design Agent",
+      "personas": [
+        "Product Owner"
+      ],
+      "description": "Designs the best way to fix / enhance the story and provides spec."
+    },
+    {
+      "name": "Data Product Agent",
+      "personas": [
+        "Product Owner"
+      ],
+      "description": "Defines the parameters / metadata for a data product."
+    },
+    {
+      "name": "Data modelling Agent",
+      "personas": [
+        "Data modeller"
+      ],
+      "description": "Models the data into either data vault and / or dimensional modelling."
+    },
+    {
+      "name": "Lineage Agent",
+      "personas": [
+        "Product Owner"
+      ],
+      "description": "Creates details lineage report of the impacted objects (tables / code / jobs)."
+    },
+    {
+      "name": "Impact Analysis Agent",
+      "personas": [
+        "Product Owner"
+      ],
+      "description": "Creates detailed impact analysis, forward and backward."
+    },
+    {
+      "name": "SQL Agent",
+      "personas": [
+        "Data Engineer"
+      ],
+      "description": "Modifies / creates SQL scripts based on the spec."
+    },
+    {
+      "name": "Python Agent",
+      "personas": [
+        "Data Engineer"
+      ],
+      "description": "Modifies / creates Python scripts based on the spec."
+    },
+    {
+      "name": "Stored Proc Agent",
+      "personas": [
+        "Data Engineer"
+      ],
+      "description": "Modifies / creates stored procedures in Snowflake based on the spec."
+    },
+    {
+      "name": "Scheduler Agent",
+      "personas": [
+        "Data Engineer"
+      ],
+      "description": "Modifies / creates the Korous schedule based on the spec."
+    },
+    {
+      "name": "Code Refactor Agent",
+      "personas": [
+        "Data Engineer"
+      ],
+      "description": "Refactors code based on the standards."
+    },
+    {
+      "name": "Unit Test Agent",
+      "personas": [
+        "Test Engineer"
+      ],
+      "description": "Creates unit test cases based on the spec and code."
+    },
+    {
+      "name": "Regression Test Agent",
+      "personas": [
+        "Test Engineer"
+      ],
+      "description": "Identifies all the unit test cases for that particular code and updates the catalog for future regression suite."
+    },
+    {
+      "name": "SQL Optimizer Agent",
+      "personas": [
+        "Finops & Devops"
+      ],
+      "description": "Scans the code and optimizes the SQL for Snowflake execution by simulating and providing the optimzed parameters."
+    },
+    {
+      "name": "Sonar Remediation Agent",
+      "personas": [
+        "Finops & Devops"
+      ],
+      "description": "Scans the code for 132 rules used by Sonar and fixes the code agianst those rules."
+    },
+    {
+      "name": "Code Quality Agent",
+      "personas": [
+        "Finops & Devops"
+      ],
+      "description": "Scans the code for all quality / best practises and fixes the code."
+    },
+    {
+      "name": "Code Review Agent",
+      "personas": [
+        "Engineering Leader"
+      ],
+      "description": "Reviews the code against the standards / best practises and provides the report / fix the code."
+    },
+    {
+      "name": "Governance & Security Agent",
+      "personas": [
+        "Engineering Leader"
+      ],
+      "description": "Scans the code for any security / governance violations and provides report / fix the code."
+    }
+  ]
+}

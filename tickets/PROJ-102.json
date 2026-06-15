@@ -1,0 +1,70 @@
+{
+  "id": "PROJ-102",
+  "type": "Story",
+  "status": "Open",
+  "priority": "Medium",
+  "reporter": "jmiller",
+  "assignee": null,
+  "components": ["FCT_TRADES", "VW_DAILY_POSITIONS"],
+  "summary": "Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS",
+  "description": "Business wants settlement reporting. Add a new SETTLEMENT_DATE column to FCT_TRADES (T+2 from trade date), populate it in LOAD_FCT_TRADES, and surface settlement date in VW_DAILY_POSITIONS so downstream consumers can report on a settlement basis. This is new functionality, not a defect.",
+  "labels": ["enhancement", "reporting"],
+  "created": "2026-06-09T16:40:00Z",
+  "triage": {
+    "verdict": "FEATURE",
+    "confidence": 0.97,
+    "severity": "P3",
+    "rationale": "Ticket type is Story with label 'enhancement'; description explicitly states 'new functionality, not a defect' — adds a new SETTLEMENT_DATE column to FCT_TRADES, populates it in LOAD_FCT_TRADES, and surfaces it in VW_DAILY_POSITIONS; purely additive scope with no existing behavior broken.",
+    "impacted_objects": [
+      {
+        "type": "table",
+        "name": "FCT_TRADES",
+        "path": "snowflake/ddl/fct_trades.sql",
+        "why": "Named in summary and components; requires a new SETTLEMENT_DATE column (DATE or NUMBER FK to DIM_DATE for T+2 from TRADE_DATE)"
+      },
+      {
+        "type": "proc",
+        "name": "LOAD_FCT_TRADES",
+        "path": "snowflake/procs/load_fct_trades.sql",
+        "why": "Nightly loader for FCT_TRADES; INSERT column list and SELECT projection must be extended to derive and populate SETTLEMENT_DATE (TRADE_DATE + 2 trading days via DIM_DATE or DATEADD)"
+      },
+      {
+        "type": "view",
+        "name": "VW_DAILY_POSITIONS",
+        "path": "snowflake/views/vw_daily_positions.sql",
+        "why": "Named in summary and components; currently reads FCT_TRADES and joins DIM_DATE on TRADE_DATE_KEY — must be updated to expose SETTLEMENT_DATE so downstream consumers can group/filter on a settlement basis"
+      },
+      {
+        "type": "table",
+        "name": "DIM_DATE",
+        "path": "snowflake/ddl/dim_date.sql",
+        "why": "Contains IS_TRADING_DAY flag; LOAD_FCT_TRADES will need to resolve T+2 settlement date using DIM_DATE calendar data (second join or subquery to skip non-trading days)"
+      },
+      {
+        "type": "job",
+        "name": "CTM_LOAD_FCT_TRADES",
+        "path": "control_m/CTM_LOAD_FCT_TRADES.json",
+        "why": "Calls LOAD_FCT_TRADES nightly; no schedule change expected, but job definition and its impacted_objects list must be reviewed/updated to include SETTLEMENT_DATE context after proc changes land"
+      }
+    ],
+    "recommended_agents": [
+      "design-agent",
+      "data-modelling-agent",
+      "impact-analysis-agent",
+      "sql-agent",
+      "stored-proc-agent",
+      "unit-test-agent",
+      "code-review-agent",
+      "governance-security-agent"
+    ],
+    "analyzed_by": "triage-agent",
+    "analyzed_at": "2026-06-12T09:44:55Z"
+  },
+  "approval": {
+    "spec": "specs/PROJ-102/PROJ-102.md",
+    "status": "pending",
+    "approved_by": null,
+    "approved_at": null,
+    "notes": null
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "folder": "DWH_NIGHTLY",
+  "job_name": "CTM_LOAD_FCT_TRADES",
+  "application": "ANALYTICS",
+  "sub_application": "TRADES_MART",
+  "description": "Nightly load of FCT_TRADES via Snowflake stored procedure LOAD_FCT_TRADES.",
+  "task_type": "Command",
+  "command": "snowsql -c prod -q \"CALL ANALYTICS.MART.LOAD_FCT_TRADES();\"",
+  "schedule": {
+    "cyclic": false,
+    "run_calendar": "TRADING_DAYS",
+    "time_from": "02:00",
+    "time_to": "03:00",
+    "timezone": "America/New_York"
+  },
+  "in_conditions": ["STG_TRADES_LOADED-OK", "PROJ-101_DEDUP-OK"],
+  "_proj101_note": "PROJ-101_DEDUP-OK is a ONE-TIME pre-condition: remove it after the first clean post-fix run (tracked in spec risk R5).",
+  "out_conditions": ["FCT_TRADES_LOADED-OK"],
+  "on_failure": {
+    "notify": "data-engineering-oncall",
+    "max_reruns": 2
+  },
+  "impacted_objects": [
+    "ANALYTICS.MART.LOAD_FCT_TRADES",
+    "ANALYTICS.MART.FCT_TRADES"
+  ]
+}
