@@ -1,0 +1,31 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(chmod +x .claude/hooks/sql_standards.py)",
+      "Bash(mkdir -p runtime specs reports tests)",
+      "Bash(printf '%s\\\\n' \"# runtime artifacts \\(pipeline run logs\\) are generated here at run time\")",
+      "Bash(cd \"/Users/ashish.jain/.claude/projects/-Users-ashish-jain-Downloads-new-agents-fidelity/memory/\")",
+      "Bash(cat MEMORY.md)",
+      "Bash(echo \"exit=$?\")",
+      "WebSearch",
+      "WebFetch(domain:phodu.club)",
+      "WebFetch(domain:www.shiksha.com)",
+      "Bash(timeout 20 claude -p \"reply with the single word OK\" --output-format json)",
+      "Bash(sed -n '1,6p' .claude/agents/design-agent.md)",
+      "Bash(sed -n '1,15p' .claude/hooks/sql_standards.py)",
+      "Bash(mkdir -p .github/prompts/templates .github/instructions .github/scripts .github/workflows .vscode)",
+      "Bash(cp .claude/skills/spec-template/templates/master-spec.md .github/prompts/templates/master-spec.md)",
+      "Bash(cp .claude/skills/spec-template/templates/action-spec.md .github/prompts/templates/action-spec.md)",
+      "Bash(mkdir -p /tmp/stdtest)",
+      "Bash(printf -- '-- Object: DIM_TEST\\\\n-- Owner: x\\\\n-- Ticket: T1\\\\nCREATE TABLE DIM_TEST \\(ID INT\\);\\\\n')",
+      "Bash(printf 'CREATE TABLE customers AS SELECT * FROM x;\\\\n')",
+      "Bash(echo \"  exit=$?\")",
+      "Bash(rm -rf /tmp/stdtest)",
+      "Bash(grep -nE '^```|^## \\(Objective|Proposed changes|Impacted objects|Test plan|Rollback plan|Risks|Approvals\\)' /Users/ashish.jain/Downloads/new_agents_fidelity/.claude/agents/design-agent.md)",
+      "Bash(echo \"  proc passes standards \\(exit $?\\)\")",
+      "Bash(sed -n '1,16p' specs/PROJ-103/triage-agent.md)",
+      "Bash(sed -n '20,26p' specs/PROJ-103/python-agent.md)"
+    ]
+  }
+}

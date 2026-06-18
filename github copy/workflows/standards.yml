@@ -1,0 +1,50 @@
+name: standards
+
+# CI gate for the SQL/Python standards (COPILOT-001). Mirrors the pre-commit
+# hook and the Claude PostToolUse hook, reusing .claude/hooks/sql_standards.py
+# via .github/scripts/check_standards.py.
+
+on:
+  push:
+    paths: ['**/*.sql', '**/*.py']
+  pull_request:
+    paths: ['**/*.sql', '**/*.py']
+
+jobs:
+  check-standards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Determine changed SQL/Python files
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base="${{ github.event.pull_request.base.sha }}"
+            files=$(git diff --name-only "$base" "${{ github.sha }}" -- '*.sql' '*.py' || true)
+          else
+            files=$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- '*.sql' '*.py' || true)
+          fi
+          # Fallback: if no diff resolved, check everything tracked.
+          if [ -z "$files" ]; then
+            files=$(git ls-files '*.sql' '*.py')
+          fi
+          echo "files<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$files" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      - name: Run standards check
+        run: |
+          files="${{ steps.changed.outputs.files }}"
+          if [ -z "$files" ]; then
+            echo "No .sql/.py files to check."
+            exit 0
+          fi
+          echo "Checking:"; echo "$files"
+          echo "$files" | xargs python .github/scripts/check_standards.py
