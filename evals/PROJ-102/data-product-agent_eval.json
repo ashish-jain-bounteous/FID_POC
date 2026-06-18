@@ -1,0 +1,22 @@
+{
+  "skill_name": "data-product-agent",
+  "ticket": "PROJ-102",
+  "agent": "data-product-agent",
+  "routed": false,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the data-product-agent. Assess whether you should act on ticket PROJ-102 (FEATURE/P3 \u2014 Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS). The Triage block (tickets/PROJ-102.json) determines routing. If you are not routed, say so and take no action.",
+      "expected_output": "data-product-agent recognizes it is out of scope for PROJ-102 and takes no action.",
+      "files": [
+        "tickets/PROJ-102.json"
+      ],
+      "expectations": [
+        "Recognizes that data-product-agent is NOT routed for PROJ-102 (absent from Triage recommended_agents)",
+        "Takes no action and makes no source/model file changes",
+        "States what it would do if it were routed (i.e. define the parameters/metadata for the data product (owner, SLAs, schema contract, classification))"
+      ]
+    }
+  ]
+}

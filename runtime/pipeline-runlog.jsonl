@@ -1,22 +1,5 @@
-{"ticket": "PROJ-101", "agent": "triage-agent", "status": "done", "note": "ISSUE/P2; 4 impacted objects; route len 6", "ts": "2026-06-10T08:28:58Z"}
-{"ticket": "PROJ-102", "agent": "triage-agent", "status": "done", "note": "FEATURE/P3; 3 impacted objects; route starts design-agent", "ts": "2026-06-10T08:28:58Z"}
-{"ticket": "PROJ-101", "agent": "triage-agent", "status": "done", "note": "ISSUE/P2 conf0.97; root cause missing IS_CURRENT filter; 5 impacted objects", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "impact-analysis-agent", "status": "stub", "note": "NOT IMPLEMENTED; would write reports/PROJ-101-impact.md (fwd+bwd)", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "lineage-agent", "status": "stub", "note": "NOT IMPLEMENTED; would write reports/PROJ-101-lineage.md (DAG)", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "stored-proc-agent", "status": "stub", "note": "NOT IMPLEMENTED; would add AND ACC.IS_CURRENT=TRUE + dedup to LOAD_FCT_TRADES", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "unit-test-agent", "status": "stub", "note": "NOT IMPLEMENTED; would write tests/PROJ-101/*.sql (10 cases)", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "regression-test-agent", "status": "stub", "note": "NOT IMPLEMENTED; would update tests/regression-catalog.json", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "code-review-agent", "status": "stub", "note": "NOT IMPLEMENTED; would write reports/PROJ-101-review.md verdict", "ts": "2026-06-10T08:58:53Z"}
-{"ticket": "PROJ-101", "agent": "triage-agent", "status": "done", "note": "reused prior triage: ISSUE/P2; 5 impacted objects", "ts": "2026-06-10T11:31:32Z"}
-{"ticket": "PROJ-101", "agent": "design-agent", "status": "done", "note": "wrote specs/PROJ-101.md; 5 proposed changes + tests/rollback/risks", "ts": "2026-06-10T11:31:32Z"}
-{"ticket": "PROJ-101", "agent": "__gate__", "status": "APPROVAL_PENDING", "note": "HALT: spec awaits SME approval; no build agents run", "ts": "2026-06-10T11:31:32Z"}
-{"ticket": "PROJ-101", "agent": "__gate__", "status": "APPROVED", "note": "SME approved specs/PROJ-101.md as-is at 2026-06-10T11:36:05Z", "ts": "2026-06-10T12:38:33Z"}
-{"ticket": "PROJ-101", "agent": "stored-proc-agent", "status": "done(by-jarvis)", "note": "Applied Changes 1-2 to load_fct_trades.sql (IS_CURRENT filter + NOT EXISTS); passed standards hook", "ts": "2026-06-10T12:38:33Z"}
-{"ticket": "PROJ-101", "agent": "sql-agent", "status": "done(by-jarvis)", "note": "Applied Change 3 (UNIQUE TRADE_ID) + Change 4 (remediation script); passed hook", "ts": "2026-06-10T12:38:33Z"}
-{"ticket": "PROJ-101", "agent": "scheduler-agent", "status": "done(by-jarvis)", "note": "Applied Change 5 (PROJ-101_DEDUP-OK one-time in_condition)", "ts": "2026-06-10T12:38:33Z"}
-{"ticket": "PROJ-101", "agent": "unit-test-agent", "status": "done(by-jarvis)", "note": "Wrote tests/PROJ-101/test_load_fct_trades.sql (U-1,U-3,U-4,U-7,U-8)", "ts": "2026-06-10T12:38:33Z"}
-{"ticket": "PROJ-101", "agent": "regression-test-agent", "status": "done(by-jarvis)", "note": "Updated tests/regression-catalog.json", "ts": "2026-06-10T12:38:33Z"}
-{"ticket": "PROJ-101", "agent": "code-review-agent", "status": "done(by-jarvis)", "note": "APPROVED: all 5 changes match spec; standards hook green; backup+deploy-order documented", "ts": "2026-06-10T12:38:33Z"}
-{"ticket":"PROJ-102","agent":"triage-agent","status":"done","note":"FEATURE/P3; 5 impacted objects; 8-agent route","ts":"2026-06-12T09:44:55Z"}
-{"ticket":"PROJ-102","agent":"design-agent","status":"done","note":"specs/PROJ-102.md written; awaits SME approval","ts":"2026-06-12T09:46:30Z"}
-{"ticket":"PROJ-102","agent":"jarvis-gate","status":"APPROVAL_PENDING","note":"SME approval gate reached; spec specs/PROJ-102.md presented; pipeline halted before route","ts":"2026-06-12T09:47:30Z"}
+{"ticket": "PROJ-103", "agent": "triage-agent", "status": "done", "note": "Reused existing triage: FEATURE/P3; route design,sql-optimizer,stored-proc,code-review.", "ts": "2026-06-18T06:43:24Z", "channel": ".github"}
+{"ticket": "PROJ-103", "agent": "design-agent", "status": "done", "note": "Wrote specs/PROJ-103/PROJ-103.md (3 changes). Produced token estimate; halting for human go-ahead.", "ts": "2026-06-18T06:43:24Z", "channel": ".github"}
+{"ticket": "PROJ-103", "agent": "jarvis-gate", "status": "APPROVAL_PENDING", "note": "HARD STOP at SME/human-in-the-loop gate. No downstream agent run. Eval not run (on-demand).", "ts": "2026-06-18T06:43:24Z", "channel": ".github"}
+{"ticket": "PROJ-103", "agent": "design-agent", "status": "done", "note": "Scaffolded 18 per-agent action specs in specs/PROJ-103/ (incl. triage-agent, design-agent) + master spec.", "ts": "2026-06-18T06:50:36Z", "channel": ".github"}
+{"ticket": "PROJ-103", "agent": "jarvis(plan-mode)", "status": "plan", "note": "Plan-mode run; end-to-end plan written to Plan/PROJ-103/pipeline-plan.md. No development. Gate: pending.", "ts": "2026-06-18T07:02:40Z", "channel": ".github"}

@@ -5,16 +5,22 @@
   "priority": "Medium",
   "reporter": "jmiller",
   "assignee": null,
-  "components": ["FCT_TRADES", "VW_DAILY_POSITIONS"],
+  "components": [
+    "FCT_TRADES",
+    "VW_DAILY_POSITIONS"
+  ],
   "summary": "Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS",
   "description": "Business wants settlement reporting. Add a new SETTLEMENT_DATE column to FCT_TRADES (T+2 from trade date), populate it in LOAD_FCT_TRADES, and surface settlement date in VW_DAILY_POSITIONS so downstream consumers can report on a settlement basis. This is new functionality, not a defect.",
-  "labels": ["enhancement", "reporting"],
+  "labels": [
+    "enhancement",
+    "reporting"
+  ],
   "created": "2026-06-09T16:40:00Z",
   "triage": {
     "verdict": "FEATURE",
     "confidence": 0.97,
     "severity": "P3",
-    "rationale": "Ticket type is Story with label 'enhancement'; description explicitly states 'new functionality, not a defect' — adds a new SETTLEMENT_DATE column to FCT_TRADES, populates it in LOAD_FCT_TRADES, and surfaces it in VW_DAILY_POSITIONS; purely additive scope with no existing behavior broken.",
+    "rationale": "Ticket type is Story with label 'enhancement'; description explicitly states 'new functionality, not a defect' \u2014 adds a new SETTLEMENT_DATE column to FCT_TRADES, populates it in LOAD_FCT_TRADES, and surfaces it in VW_DAILY_POSITIONS; purely additive scope with no existing behavior broken.",
     "impacted_objects": [
       {
         "type": "table",
@@ -32,7 +38,7 @@
         "type": "view",
         "name": "VW_DAILY_POSITIONS",
         "path": "snowflake/views/vw_daily_positions.sql",
-        "why": "Named in summary and components; currently reads FCT_TRADES and joins DIM_DATE on TRADE_DATE_KEY — must be updated to expose SETTLEMENT_DATE so downstream consumers can group/filter on a settlement basis"
+        "why": "Named in summary and components; currently reads FCT_TRADES and joins DIM_DATE on TRADE_DATE_KEY \u2014 must be updated to expose SETTLEMENT_DATE so downstream consumers can group/filter on a settlement basis"
       },
       {
         "type": "table",
@@ -61,10 +67,10 @@
     "analyzed_at": "2026-06-12T09:44:55Z"
   },
   "approval": {
-    "spec": "specs/PROJ-102/PROJ-102.md",
+    "spec": null,
     "status": "pending",
     "approved_by": null,
     "approved_at": null,
-    "notes": null
+    "notes": "Spec removed during cleanup; a fresh spec must be written and approved before any work."
   }
 }

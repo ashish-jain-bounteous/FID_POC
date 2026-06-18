@@ -1,0 +1,286 @@
+{
+  "spec": "specs/EVALS-001-agent-evaluations.md",
+  "generated_at": "2026-06-16T06:51:05Z",
+  "tickets": [
+    "PROJ-101",
+    "PROJ-102"
+  ],
+  "agents": [
+    "triage-agent",
+    "design-agent",
+    "data-product-agent",
+    "data-modelling-agent",
+    "lineage-agent",
+    "impact-analysis-agent",
+    "sql-agent",
+    "stored-proc-agent",
+    "python-agent",
+    "scheduler-agent",
+    "code-refactor-agent",
+    "unit-test-agent",
+    "regression-test-agent",
+    "sql-optimizer-agent",
+    "sonar-remediation-agent",
+    "code-quality-agent",
+    "code-review-agent",
+    "governance-security-agent"
+  ],
+  "evals": [
+    {
+      "ticket": "PROJ-101",
+      "agent": "triage-agent",
+      "path": "evals/PROJ-101/triage-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "design-agent",
+      "path": "evals/PROJ-101/design-agent_eval.json",
+      "routed": true,
+      "with_skill": [
+        "spec-template"
+      ]
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "data-product-agent",
+      "path": "evals/PROJ-101/data-product-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "data-modelling-agent",
+      "path": "evals/PROJ-101/data-modelling-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "lineage-agent",
+      "path": "evals/PROJ-101/lineage-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "impact-analysis-agent",
+      "path": "evals/PROJ-101/impact-analysis-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "sql-agent",
+      "path": "evals/PROJ-101/sql-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "stored-proc-agent",
+      "path": "evals/PROJ-101/stored-proc-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "python-agent",
+      "path": "evals/PROJ-101/python-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "scheduler-agent",
+      "path": "evals/PROJ-101/scheduler-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "code-refactor-agent",
+      "path": "evals/PROJ-101/code-refactor-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "unit-test-agent",
+      "path": "evals/PROJ-101/unit-test-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "regression-test-agent",
+      "path": "evals/PROJ-101/regression-test-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "sql-optimizer-agent",
+      "path": "evals/PROJ-101/sql-optimizer-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "sonar-remediation-agent",
+      "path": "evals/PROJ-101/sonar-remediation-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "code-quality-agent",
+      "path": "evals/PROJ-101/code-quality-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "code-review-agent",
+      "path": "evals/PROJ-101/code-review-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-101",
+      "agent": "governance-security-agent",
+      "path": "evals/PROJ-101/governance-security-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "triage-agent",
+      "path": "evals/PROJ-102/triage-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "design-agent",
+      "path": "evals/PROJ-102/design-agent_eval.json",
+      "routed": true,
+      "with_skill": [
+        "spec-template"
+      ]
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "data-product-agent",
+      "path": "evals/PROJ-102/data-product-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "data-modelling-agent",
+      "path": "evals/PROJ-102/data-modelling-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "lineage-agent",
+      "path": "evals/PROJ-102/lineage-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "impact-analysis-agent",
+      "path": "evals/PROJ-102/impact-analysis-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "sql-agent",
+      "path": "evals/PROJ-102/sql-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "stored-proc-agent",
+      "path": "evals/PROJ-102/stored-proc-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "python-agent",
+      "path": "evals/PROJ-102/python-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "scheduler-agent",
+      "path": "evals/PROJ-102/scheduler-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "code-refactor-agent",
+      "path": "evals/PROJ-102/code-refactor-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "unit-test-agent",
+      "path": "evals/PROJ-102/unit-test-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "regression-test-agent",
+      "path": "evals/PROJ-102/regression-test-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "sql-optimizer-agent",
+      "path": "evals/PROJ-102/sql-optimizer-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "sonar-remediation-agent",
+      "path": "evals/PROJ-102/sonar-remediation-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "code-quality-agent",
+      "path": "evals/PROJ-102/code-quality-agent_eval.json",
+      "routed": false,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "code-review-agent",
+      "path": "evals/PROJ-102/code-review-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    },
+    {
+      "ticket": "PROJ-102",
+      "agent": "governance-security-agent",
+      "path": "evals/PROJ-102/governance-security-agent_eval.json",
+      "routed": true,
+      "with_skill": []
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+ w2026-06-16T10:12:48Z INFO      run start ticket=PROJ-101 agents=18 runs_per_query=1 dry_run=False model=sonnet
+2026-06-16T10:12:48Z INFO      triage-agent loaded evals/PROJ-101/triage-agent_eval.json with_skill=[] expectations=4
+2026-06-16T10:15:16Z INFO      triage-agent arm=with     pass=1.00
+2026-06-16T10:15:16Z INFO      triage-agent arm=baseline pass=1.00
+2026-06-16T10:15:16Z INFO      triage-agent delta=+0.00 verdict=no lift
+2026-06-16T10:15:16Z INFO      design-agent loaded evals/PROJ-101/design-agent_eval.json with_skill=['spec-template'] expectations=5
+2026-06-16T10:19:08Z EXCEPTION design-agent arm=baseline run=1 TimeoutExpired: Command '['claude', '-p', "You are the design-agent. For ticket PROJ-101 (ISSUE/P2 — FCT_TRADES shows duplicate trades for some accounts after nightly load), author the master implementation spec listing every proposed change, impacted objects, test plan and rollback (proposes only). The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.", '--model', 'sonnet', '--output-format', 'json', '--add-dir', '/Users/ashish.jain/Downloads/new_agents_fidelity', '--permission-mode', 'bypassPermissions', '--disallowedTools', 'Write', 'Edit', 'NotebookEdit', '--append-system-prompt', 'Evaluation mode: you are being evaluated. Work READ-ONLY: do not create, edit, or delete any file. Describe precisely the artifact and changes you would produce for this ticket.', '--disable-slash-commands']' timed out after 150 seconds; continuing
+2026-06-16T10:19:08Z INFO      design-agent arm=with     pass=0.40
+2026-06-16T10:19:08Z INFO      data-product-agent loaded evals/PROJ-101/data-product-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:19:54Z INFO      data-product-agent arm=with     pass=0.67
+2026-06-16T10:19:54Z INFO      data-product-agent arm=baseline pass=1.00
+2026-06-16T10:19:54Z INFO      data-product-agent delta=-0.33 verdict=skill hurts
+2026-06-16T10:19:54Z INFO      data-modelling-agent loaded evals/PROJ-101/data-modelling-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:20:32Z INFO      data-modelling-agent arm=with     pass=0.67
+2026-06-16T10:20:32Z INFO      data-modelling-agent arm=baseline pass=0.67
+2026-06-16T10:20:32Z INFO      data-modelling-agent delta=+0.00 verdict=no lift
+2026-06-16T10:20:32Z INFO      lineage-agent loaded evals/PROJ-101/lineage-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:24:56Z INFO      lineage-agent arm=with     pass=1.00
+2026-06-16T10:24:56Z INFO      lineage-agent arm=baseline pass=1.00
+2026-06-16T10:24:56Z INFO      lineage-agent delta=+0.00 verdict=no lift
+2026-06-16T10:24:56Z INFO      impact-analysis-agent loaded evals/PROJ-101/impact-analysis-agent_eval.json with_skill=[] expectations=4
+2026-06-16T10:27:26Z EXCEPTION impact-analysis-agent arm=with run=1 TimeoutExpired: Command '['claude', '-p', "You are the impact-analysis-agent. For ticket PROJ-101 (ISSUE/P2 — FCT_TRADES shows duplicate trades for some accounts after nightly load), create a detailed forward and backward impact analysis for the change. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.", '--model', 'sonnet', '--output-format', 'json', '--add-dir', '/Users/ashish.jain/Downloads/new_agents_fidelity', '--permission-mode', 'bypassPermissions', '--disallowedTools', 'Write', 'Edit', 'NotebookEdit', '--append-system-prompt', 'Evaluation mode: you are being evaluated. Work READ-ONLY: do not create, edit, or delete any file. Describe precisely the artifact and changes you would produce for this ticket.']' timed out after 150 seconds; continuing
+2026-06-16T10:29:56Z EXCEPTION impact-analysis-agent arm=baseline run=1 TimeoutExpired: Command '['claude', '-p', "You are the impact-analysis-agent. For ticket PROJ-101 (ISSUE/P2 — FCT_TRADES shows duplicate trades for some accounts after nightly load), create a detailed forward and backward impact analysis for the change. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.", '--model', 'sonnet', '--output-format', 'json', '--add-dir', '/Users/ashish.jain/Downloads/new_agents_fidelity', '--permission-mode', 'bypassPermissions', '--disallowedTools', 'Write', 'Edit', 'NotebookEdit', '--append-system-prompt', 'Evaluation mode: you are being evaluated. Work READ-ONLY: do not create, edit, or delete any file. Describe precisely the artifact and changes you would produce for this ticket.', '--disable-slash-commands']' timed out after 150 seconds; continuing
+2026-06-16T10:29:56Z INFO      sql-agent loaded evals/PROJ-101/sql-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:30:35Z INFO      sql-agent arm=with     pass=0.67
+2026-06-16T10:30:35Z INFO      sql-agent arm=baseline pass=0.67
+2026-06-16T10:30:35Z INFO      sql-agent delta=+0.00 verdict=no lift
+2026-06-16T10:30:35Z INFO      stored-proc-agent loaded evals/PROJ-101/stored-proc-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:33:41Z INFO      stored-proc-agent arm=with     pass=0.67
+2026-06-16T10:33:41Z INFO      stored-proc-agent arm=baseline pass=1.00
+2026-06-16T10:33:41Z INFO      stored-proc-agent delta=-0.33 verdict=skill hurts
+2026-06-16T10:33:41Z INFO      python-agent loaded evals/PROJ-101/python-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:34:23Z INFO      python-agent arm=with     pass=0.67
+2026-06-16T10:34:23Z INFO      python-agent arm=baseline pass=0.67
+2026-06-16T10:34:23Z INFO      python-agent delta=+0.00 verdict=no lift
+2026-06-16T10:34:23Z INFO      scheduler-agent loaded evals/PROJ-101/scheduler-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:35:16Z INFO      scheduler-agent arm=with     pass=0.67
+2026-06-16T10:35:16Z INFO      scheduler-agent arm=baseline pass=0.67
+2026-06-16T10:35:16Z INFO      scheduler-agent delta=+0.00 verdict=no lift
+2026-06-16T10:35:16Z INFO      code-refactor-agent loaded evals/PROJ-101/code-refactor-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:36:03Z INFO      code-refactor-agent arm=with     pass=0.67
+2026-06-16T10:36:03Z INFO      code-refactor-agent arm=baseline pass=0.67
+2026-06-16T10:36:03Z INFO      code-refactor-agent delta=+0.00 verdict=no lift
+2026-06-16T10:36:03Z INFO      unit-test-agent loaded evals/PROJ-101/unit-test-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:38:33Z EXCEPTION unit-test-agent arm=with run=1 TimeoutExpired: Command '['claude', '-p', "You are the unit-test-agent. For ticket PROJ-101 (ISSUE/P2 — FCT_TRADES shows duplicate trades for some accounts after nightly load), create unit test cases based on the spec and code. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.", '--model', 'sonnet', '--output-format', 'json', '--add-dir', '/Users/ashish.jain/Downloads/new_agents_fidelity', '--permission-mode', 'bypassPermissions', '--disallowedTools', 'Write', 'Edit', 'NotebookEdit', '--append-system-prompt', 'Evaluation mode: you are being evaluated. Work READ-ONLY: do not create, edit, or delete any file. Describe precisely the artifact and changes you would produce for this ticket.']' timed out after 150 seconds; continuing
+2026-06-16T10:41:03Z EXCEPTION unit-test-agent arm=baseline run=1 TimeoutExpired: Command '['claude', '-p', "You are the unit-test-agent. For ticket PROJ-101 (ISSUE/P2 — FCT_TRADES shows duplicate trades for some accounts after nightly load), create unit test cases based on the spec and code. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.", '--model', 'sonnet', '--output-format', 'json', '--add-dir', '/Users/ashish.jain/Downloads/new_agents_fidelity', '--permission-mode', 'bypassPermissions', '--disallowedTools', 'Write', 'Edit', 'NotebookEdit', '--append-system-prompt', 'Evaluation mode: you are being evaluated. Work READ-ONLY: do not create, edit, or delete any file. Describe precisely the artifact and changes you would produce for this ticket.', '--disable-slash-commands']' timed out after 150 seconds; continuing
+2026-06-16T10:41:03Z INFO      regression-test-agent loaded evals/PROJ-101/regression-test-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:45:20Z INFO      regression-test-agent arm=with     pass=1.00
+2026-06-16T10:45:20Z INFO      regression-test-agent arm=baseline pass=1.00
+2026-06-16T10:45:20Z INFO      regression-test-agent delta=+0.00 verdict=no lift
+2026-06-16T10:45:20Z INFO      sql-optimizer-agent loaded evals/PROJ-101/sql-optimizer-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:45:59Z INFO      sql-optimizer-agent arm=with     pass=0.67
+2026-06-16T10:45:59Z INFO      sql-optimizer-agent arm=baseline pass=0.67
+2026-06-16T10:45:59Z INFO      sql-optimizer-agent delta=+0.00 verdict=no lift
+2026-06-16T10:45:59Z INFO      sonar-remediation-agent loaded evals/PROJ-101/sonar-remediation-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:46:47Z INFO      sonar-remediation-agent arm=with     pass=0.67
+2026-06-16T10:46:47Z INFO      sonar-remediation-agent arm=baseline pass=0.67
+2026-06-16T10:46:47Z INFO      sonar-remediation-agent delta=+0.00 verdict=no lift
+2026-06-16T10:46:47Z INFO      code-quality-agent loaded evals/PROJ-101/code-quality-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:47:20Z INFO      code-quality-agent arm=with     pass=0.67
+2026-06-16T10:47:20Z INFO      code-quality-agent arm=baseline pass=0.67
+2026-06-16T10:47:20Z INFO      code-quality-agent delta=+0.00 verdict=no lift
+2026-06-16T10:47:20Z INFO      code-review-agent loaded evals/PROJ-101/code-review-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:52:07Z INFO      code-review-agent arm=with     pass=1.00
+2026-06-16T10:52:07Z INFO      code-review-agent arm=baseline pass=1.00
+2026-06-16T10:52:07Z INFO      code-review-agent delta=+0.00 verdict=no lift
+2026-06-16T10:52:07Z INFO      governance-security-agent loaded evals/PROJ-101/governance-security-agent_eval.json with_skill=[] expectations=3
+2026-06-16T10:52:41Z INFO      governance-security-agent arm=with     pass=0.67
+2026-06-16T10:52:41Z INFO      governance-security-agent arm=baseline pass=0.67
+2026-06-16T10:52:41Z INFO      governance-security-agent delta=+0.00 verdict=no lift
+2026-06-16T10:52:41Z INFO      run complete agents=18 mean_delta=-0.0444 errors=3

@@ -1,0 +1,69 @@
+{
+  "id": "PROJ-103",
+  "type": "Task",
+  "status": "Open",
+  "priority": "Medium",
+  "reporter": "smehta",
+  "assignee": null,
+  "components": [
+    "LOAD_FCT_TRADES",
+    "Nightly Load",
+    "Performance"
+  ],
+  "summary": "Optimize LOAD_FCT_TRADES stored procedure for faster nightly load",
+  "description": "The nightly CTM_LOAD_FCT_TRADES job, which runs the ANALYTICS.MART.LOAD_FCT_TRADES stored procedure, has been getting slower as FCT_TRADES grows. The procedure inserts new staging trades using a `WHERE NOT EXISTS (SELECT 1 FROM FCT_TRADES ...)` anti-join, which re-scans the entire FCT_TRADES fact table on every run to dedup by TRADE_ID; this full scan dominates the runtime and is approaching the nightly batch window. Request a performance optimization of the procedure for Snowflake execution. Candidate approaches to evaluate (no behavior/output change): convert the INSERT...SELECT anti-join to an incremental MERGE or a Snowflake STREAM on STG_TRADES so only new staging rows are processed; add a clustering key or enable the Search Optimization Service on FCT_TRADES(TRADE_ID) to speed the dedup lookup; review warehouse sizing / query profile to right-size compute. This is a pure performance/cost improvement: the rows loaded, dimension key resolution, GROSS/NET calculations, and FCT_TRADES output must remain byte-for-byte identical. No new columns, tables, or business logic are requested.",
+  "labels": [
+    "performance",
+    "optimization",
+    "snowflake",
+    "finops"
+  ],
+  "created": "2026-06-17T06:59:06Z",
+  "triage": {
+    "verdict": "FEATURE",
+    "confidence": 0.95,
+    "severity": "P3",
+    "rationale": "Performance optimization request for LOAD_FCT_TRADES sproc. The WHERE NOT EXISTS (SELECT 1 FROM FCT_TRADES ...) anti-join re-scans the entire fact table on every nightly run to dedup by TRADE_ID; this full table scan dominates runtime as FCT_TRADES grows and approaches batch window SLA. Request is for performance/cost improvement only\u2014no behavior or output change requested. Candidate approaches: MERGE instead of INSERT...SELECT anti-join, Snowflake STREAM on STG_TRADES, clustering key or Search Optimization Service on FCT_TRADES(TRADE_ID), query profile review + warehouse sizing.",
+    "impacted_objects": [
+      {
+        "type": "proc",
+        "name": "LOAD_FCT_TRADES",
+        "path": "snowflake/procs/load_fct_trades.sql",
+        "why": "Named in summary; the procedure whose performance is being optimized. Currently uses WHERE NOT EXISTS dedup anti-join; candidate for MERGE or STREAM-based refresh."
+      },
+      {
+        "type": "table",
+        "name": "FCT_TRADES",
+        "path": "snowflake/ddl/fct_trades.sql",
+        "why": "Fact table subject of full-table dedup scan in the anti-join. Candidates for optimization: add clustering key on TRADE_ID, enable Search Optimization Service (SOS), or migrate to STREAM-based change capture."
+      },
+      {
+        "type": "table",
+        "name": "STG_TRADES",
+        "path": "snowflake/staging/stg_trades.sql",
+        "why": "Source staging table for LOAD_FCT_TRADES. If STREAM-based approach is adopted, this becomes the source stream to track delta trades."
+      },
+      {
+        "type": "job",
+        "name": "CTM_LOAD_FCT_TRADES",
+        "path": "control_m/CTM_LOAD_FCT_TRADES.json",
+        "why": "Control-M job that invokes LOAD_FCT_TRADES nightly. If optimization changes job runtime significantly, scheduling/window may need adjustment."
+      }
+    ],
+    "recommended_agents": [
+      "design-agent",
+      "sql-optimizer-agent",
+      "stored-proc-agent",
+      "code-review-agent"
+    ],
+    "analyzed_by": "jarvis(triage)",
+    "analyzed_at": "2026-06-17T06:56:09Z"
+  },
+  "approval": {
+    "spec": "specs/PROJ-103/PROJ-103.md",
+    "status": "pending",
+    "approved_by": null,
+    "approved_at": null,
+    "notes": "Spec re-authored in .github guided run; awaiting human go-ahead at the SME gate."
+  }
+}

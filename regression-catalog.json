@@ -1,0 +1,21 @@
+{
+  "catalog_version": "1.0",
+  "last_updated": "2026-06-10",
+  "entries": [
+    {
+      "ticket_id": "PROJ-101",
+      "priority": "P2",
+      "changed_objects": ["LOAD_FCT_TRADES", "FCT_TRADES", "CTM_LOAD_FCT_TRADES"],
+      "tests": [
+        {
+          "file": "tests/PROJ-101/test_load_fct_trades.sql",
+          "type": "unit",
+          "covers_object": "LOAD_FCT_TRADES",
+          "cases": ["U-1", "U-3", "U-4", "U-7", "U-8"],
+          "status": "pending_run"
+        }
+      ],
+      "regression_suite": ["R-1", "R-2", "R-3", "R-4", "R-5"]
+    }
+  ]
+}

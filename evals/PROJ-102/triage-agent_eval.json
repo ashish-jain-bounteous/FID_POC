@@ -1,0 +1,24 @@
+{
+  "skill_name": "triage-agent",
+  "ticket": "PROJ-102",
+  "agent": "triage-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the triage-agent. For ticket PROJ-102 (FEATURE/P3 \u2014 Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS), classify the ticket as ISSUE/FEATURE, set severity, list impacted objects, and recommend the downstream route. The Triage block is in tickets/PROJ-102.json and the approved master spec is specs/PROJ-102/PROJ-102.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "triage-agent correctly classify the ticket as ISSUE/FEATURE, set severity, list impacted objects, and recommend the downstream route for PROJ-102, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-102.json",
+        "specs/PROJ-102/PROJ-102.md"
+      ],
+      "expectations": [
+        "Classifies the verdict as FEATURE",
+        "Assigns severity P3",
+        "Lists impacted objects including FCT_TRADES and VW_DAILY_POSITIONS",
+        "recommended_agents lists design-agent first"
+      ]
+    }
+  ]
+}

@@ -5,46 +5,52 @@
   "priority": "High",
   "reporter": "rgupta",
   "assignee": null,
-  "components": ["FCT_TRADES", "Nightly Load"],
+  "components": [
+    "FCT_TRADES",
+    "Nightly Load"
+  ],
   "summary": "FCT_TRADES shows duplicate trades for some accounts after nightly load",
   "description": "After the nightly CTM_LOAD_FCT_TRADES job runs LOAD_FCT_TRADES, a small number of accounts show duplicate rows in FCT_TRADES for the same TRADE_ID. Downstream VW_DAILY_POSITIONS therefore double-counts NET_QUANTITY for those accounts. Started after the latest DIM_ACCOUNT SCD load. No new columns or behavior were requested - existing data is simply wrong.",
-  "labels": ["data-quality", "production"],
+  "labels": [
+    "data-quality",
+    "production"
+  ],
   "created": "2026-06-09T22:14:00Z",
   "triage": {
     "verdict": "ISSUE",
     "confidence": 0.97,
     "severity": "P2",
-    "rationale": "Existing production data is incorrect — duplicate TRADE_ID rows in FCT_TRADES caused by a missing IS_CURRENT = TRUE filter in LOAD_FCT_TRADES when joining DIM_ACCOUNT, leading to double-counted NET_QUANTITY in VW_DAILY_POSITIONS; no new scope is requested.",
+    "rationale": "Existing production data is incorrect. Duplicate TRADE_ID rows appear in FCT_TRADES because LOAD_FCT_TRADES joins DIM_ACCOUNT without an IS_CURRENT = TRUE filter, which fans out when multiple SCD-2 rows exist for the same ACCOUNT_ID and double-counts NET_QUANTITY in VW_DAILY_POSITIONS. No new scope is requested.",
     "impacted_objects": [
       {
         "type": "table",
         "name": "FCT_TRADES",
         "path": "snowflake/ddl/fct_trades.sql",
-        "why": "named in summary; duplicate rows are being inserted into this fact table"
+        "why": "Named in summary; duplicate rows are being inserted into this fact table by the defective nightly load."
       },
       {
         "type": "proc",
         "name": "LOAD_FCT_TRADES",
         "path": "snowflake/procs/load_fct_trades.sql",
-        "why": "root-cause object: joins DIM_ACCOUNT without WHERE IS_CURRENT = TRUE, causing one staging trade row to match multiple DIM_ACCOUNT versions and fan out into duplicates"
+        "why": "Root-cause object: joins DIM_ACCOUNT on ACCOUNT_ID alone without AND ACC.IS_CURRENT = TRUE, so one staging trade matches multiple DIM_ACCOUNT history rows and fans out into duplicate FCT_TRADES inserts."
       },
       {
         "type": "table",
         "name": "DIM_ACCOUNT",
         "path": "snowflake/ddl/dim_account.sql",
-        "why": "SCD-2 dimension with IS_CURRENT flag; referenced in LOAD_FCT_TRADES join without the IS_CURRENT filter; latest SCD load introduced multiple IS_CURRENT rows triggering the defect"
+        "why": "SCD-2 dimension with an IS_CURRENT flag; referenced in the LOAD_FCT_TRADES join without the IS_CURRENT filter. The latest SCD-2 load left multiple IS_CURRENT = TRUE rows for the same ACCOUNT_ID, triggering the fan-out."
       },
       {
         "type": "view",
         "name": "VW_DAILY_POSITIONS",
         "path": "snowflake/views/vw_daily_positions.sql",
-        "why": "downstream consumer of FCT_TRADES; SUM aggregates on QUANTITY and NET_AMOUNT are double-counted for affected accounts"
+        "why": "Downstream consumer of FCT_TRADES; its SUM aggregates on NET_QUANTITY and NET_AMOUNT double-count for affected accounts because it reads the duplicated fact rows directly."
       },
       {
         "type": "job",
         "name": "CTM_LOAD_FCT_TRADES",
         "path": "control_m/CTM_LOAD_FCT_TRADES.json",
-        "why": "Control-M job that invokes LOAD_FCT_TRADES nightly; the defective run is scheduled via this job"
+        "why": "Control-M job that invokes LOAD_FCT_TRADES nightly; the defective procedure runs from this job."
       }
     ],
     "recommended_agents": [
@@ -56,14 +62,14 @@
       "regression-test-agent",
       "code-review-agent"
     ],
-    "analyzed_by": "triage-agent",
-    "analyzed_at": "2026-06-10T08:55:50Z"
+    "analyzed_by": "jarvis(triage) [.github guided run]",
+    "analyzed_at": "2026-06-17T12:02:41Z"
   },
   "approval": {
-    "spec": "specs/PROJ-101/PROJ-101.md",
-    "status": "approved",
-    "approved_by": "SME",
-    "approved_at": "2026-06-10T11:36:05Z",
-    "notes": "Approved as-is via Jarvis SME gate. All 5 changes authorized; deploy order 1->2->4->3->5."
+    "spec": null,
+    "status": "pending",
+    "approved_by": null,
+    "approved_at": null,
+    "notes": "Spec removed during cleanup; a fresh spec must be written and approved before any work."
   }
 }

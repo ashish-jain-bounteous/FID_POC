@@ -1,0 +1,22 @@
+{
+  "skill_name": "code-quality-agent",
+  "ticket": "PROJ-101",
+  "agent": "code-quality-agent",
+  "routed": false,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the code-quality-agent. Assess whether you should act on ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load). The Triage block (tickets/PROJ-101.json) determines routing. If you are not routed, say so and take no action.",
+      "expected_output": "code-quality-agent recognizes it is out of scope for PROJ-101 and takes no action.",
+      "files": [
+        "tickets/PROJ-101.json"
+      ],
+      "expectations": [
+        "Recognizes that code-quality-agent is NOT routed for PROJ-101 (absent from Triage recommended_agents)",
+        "Takes no action and makes no source/model file changes",
+        "States what it would do if it were routed (i.e. scan and fix code for quality/best-practice issues)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "skill_name": "impact-analysis-agent",
+  "ticket": "PROJ-102",
+  "agent": "impact-analysis-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the impact-analysis-agent. For ticket PROJ-102 (FEATURE/P3 \u2014 Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS), create a detailed forward and backward impact analysis for the change. The Triage block is in tickets/PROJ-102.json and the approved master spec is specs/PROJ-102/PROJ-102.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "impact-analysis-agent correctly create a detailed forward and backward impact analysis for the change for PROJ-102, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-102.json",
+        "specs/PROJ-102/PROJ-102.md"
+      ],
+      "expectations": [
+        "Produces both forward and backward impact for the new SETTLEMENT_DATE column",
+        "Identifies VW_DAILY_POSITIONS and any FCT_TRADES consumers as downstream",
+        "Notes the FCT_TRADES DDL and LOAD_FCT_TRADES as the changed objects",
+        "Makes no changes to any source/model file"
+      ]
+    }
+  ]
+}

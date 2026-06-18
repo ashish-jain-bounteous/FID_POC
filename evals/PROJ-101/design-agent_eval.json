@@ -1,0 +1,27 @@
+{
+  "skill_name": "design-agent",
+  "ticket": "PROJ-101",
+  "agent": "design-agent",
+  "routed": true,
+  "with_skill": [
+    "spec-template"
+  ],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the design-agent. For ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load), author the master implementation spec listing every proposed change, impacted objects, test plan and rollback (proposes only). The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "design-agent correctly author the master implementation spec listing every proposed change, impacted objects, test plan and rollback (proposes only) for PROJ-101, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-101.json",
+        "specs/PROJ-101/PROJ-101.md"
+      ],
+      "expectations": [
+        "Writes the master spec to specs/PROJ-101/PROJ-101.md",
+        "Proposes adding AND ACC.IS_CURRENT = TRUE to the DIM_ACCOUNT join in LOAD_FCT_TRADES",
+        "Includes a one-time remediation step to delete existing duplicate FCT_TRADES rows",
+        "Contains the canonical sections in order: Objective, Proposed changes (ALL), Impacted objects, Test plan, Rollback plan, Risks / open questions, Approvals",
+        "Spec Status line reads AWAITING SME APPROVAL"
+      ]
+    }
+  ]
+}

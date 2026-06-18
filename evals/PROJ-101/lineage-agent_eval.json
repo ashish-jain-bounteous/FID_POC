@@ -1,0 +1,23 @@
+{
+  "skill_name": "lineage-agent",
+  "ticket": "PROJ-101",
+  "agent": "lineage-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the lineage-agent. For ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load), create a detailed lineage report of the impacted objects (tables/code/jobs). The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "lineage-agent correctly create a detailed lineage report of the impacted objects (tables/code/jobs) for PROJ-101, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-101.json",
+        "specs/PROJ-101/PROJ-101.md"
+      ],
+      "expectations": [
+        "Documents a lineage DAG from STG_TRADES -> LOAD_FCT_TRADES -> FCT_TRADES -> VW_DAILY_POSITIONS",
+        "References the Control-M job CTM_LOAD_FCT_TRADES",
+        "Makes no changes to any source/model file"
+      ]
+    }
+  ]
+}

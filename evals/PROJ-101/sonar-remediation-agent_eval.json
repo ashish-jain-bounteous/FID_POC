@@ -1,0 +1,22 @@
+{
+  "skill_name": "sonar-remediation-agent",
+  "ticket": "PROJ-101",
+  "agent": "sonar-remediation-agent",
+  "routed": false,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the sonar-remediation-agent. Assess whether you should act on ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load). The Triage block (tickets/PROJ-101.json) determines routing. If you are not routed, say so and take no action.",
+      "expected_output": "sonar-remediation-agent recognizes it is out of scope for PROJ-101 and takes no action.",
+      "files": [
+        "tickets/PROJ-101.json"
+      ],
+      "expectations": [
+        "Recognizes that sonar-remediation-agent is NOT routed for PROJ-101 (absent from Triage recommended_agents)",
+        "Takes no action and makes no source/model file changes",
+        "States what it would do if it were routed (i.e. scan and fix code against the Sonar rules)"
+      ]
+    }
+  ]
+}

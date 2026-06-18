@@ -17,9 +17,29 @@ by a master orchestrator (**Jarvis**). Full design: [`docs/SPEC.md`](docs/SPEC.m
 snowflake/         hard-coded star schema (DIM_/FCT_), proc, view
 tickets/           mock Jira tickets (Triage input + output)
 control_m/         mock Control-M job definition
-runtime/           pipeline-runlog.jsonl (audit, generated at run time)
+evals/             per-agent eval suite + run_jarvis_eval.py (with/without-skill A/B)
+runtime/           pipeline-runlog.jsonl + eval/ logs & eval-runlog.jsonl (run time)
 docs/SPEC.md       approved specification
 ```
+
+Evaluation is **available on demand** (not run automatically, per OPTIM-001): the
+with-skill vs without-skill A/B runs when you ask for it with
+`/jarvis PROJ-101 --eval` or `python evals/run_jarvis_eval.py --ticket PROJ-101 --agents <csv>`,
+writing a results table plus a detailed log to `runtime/eval/`. See
+[`specs/OPTIM-001-token-optimization.md`](specs/OPTIM-001-token-optimization.md).
+
+## Dual-platform (Claude Code + GitHub Copilot)
+
+This repo runs on **both** Claude Code (`.claude/`) and **GitHub Copilot**
+(`.github/` + `.vscode/`). The Copilot mirror keeps the 18 agents in
+`.github/agents/` (each calling its reusable skill in `.github/skills/<name>-skill/`),
+maps the `jarvis`/`spec-template` skills to prompt files
+(`.github/prompts/`), the project rules to `.github/copilot-instructions.md`, and
+the standards hook to instructions + a pre-commit/CI gate
+(`.github/scripts/check_standards.py`). See
+[`.github/COPILOT.md`](.github/COPILOT.md) for usage and the known fidelity gaps
+(no auto sub-agent dispatch, commit-time standards, Claude-only inline eval).
+Built per [`specs/COPILOT-001-copilot-conversion.md`](specs/COPILOT-001-copilot-conversion.md).
 
 ## Run it
 

@@ -1,0 +1,23 @@
+{
+  "skill_name": "unit-test-agent",
+  "ticket": "PROJ-101",
+  "agent": "unit-test-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the unit-test-agent. For ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load), create unit test cases based on the spec and code. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "unit-test-agent correctly create unit test cases based on the spec and code for PROJ-101, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-101.json",
+        "specs/PROJ-101/PROJ-101.md"
+      ],
+      "expectations": [
+        "Defines unit tests tied to the fan-out/dedup fix (IS_CURRENT, NOT EXISTS, UNIQUE constraint, remediation idempotency)",
+        "Test artifacts target tests/PROJ-101/",
+        "Makes no changes to source/model files"
+      ]
+    }
+  ]
+}

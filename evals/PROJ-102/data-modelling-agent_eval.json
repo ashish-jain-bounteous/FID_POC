@@ -1,0 +1,23 @@
+{
+  "skill_name": "data-modelling-agent",
+  "ticket": "PROJ-102",
+  "agent": "data-modelling-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the data-modelling-agent. For ticket PROJ-102 (FEATURE/P3 \u2014 Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS), model the data into data vault and/or dimensional modelling. The Triage block is in tickets/PROJ-102.json and the approved master spec is specs/PROJ-102/PROJ-102.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "data-modelling-agent correctly model the data into data vault and/or dimensional modelling for PROJ-102, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-102.json",
+        "specs/PROJ-102/PROJ-102.md"
+      ],
+      "expectations": [
+        "Assesses the dimensional-model impact of the new SETTLEMENT_DATE column on FCT_TRADES",
+        "States whether the grain of FCT_TRADES changes (it does not)",
+        "Makes no changes to source/model files"
+      ]
+    }
+  ]
+}

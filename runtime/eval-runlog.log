@@ -1,0 +1,135 @@
+ithou================================================================================
+JARVIS AGENT EVALUATION LOG
+================================================================================
+Generated: 2026-06-17
+Evaluation Framework: Skill Performance Metrics (with-spec vs. baseline)
+Environment: Snowflake Data Platform
+
+================================================================================
+EVALUATION: PROJ-101 (2026-06-16T10:52:41Z)
+================================================================================
+
+[triage-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 100.0%
+  Baseline Pass Rate: 100.0%
+  Delta: 0.0 (no change)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS
+
+[design-agent]
+  Status: ERROR ❌
+  With-Spec Pass Rate: 40%
+  Baseline Pass Rate: TIMEOUT
+  Delta: N/A (baseline timed out)
+  Errors:
+    • baseline:TimeoutExpired
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: FAIL (baseline timeout, cannot compare)
+
+[data-product-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 66.7%
+  Baseline Pass Rate: 100.0%
+  Delta: -33.33% (regression detected)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS (with-spec lower than baseline; investigate)
+
+[data-modelling-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 66.7%
+  Baseline Pass Rate: 66.7%
+  Delta: 0.0 (consistent)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS
+
+[lineage-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 100.0%
+  Baseline Pass Rate: 100.0%
+  Delta: 0.0 (consistent)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS
+
+[impact-analysis-agent]
+  Status: ERROR ❌
+  With-Spec Pass Rate: NULL (timeout)
+  Baseline Pass Rate: NULL (timeout)
+  Delta: N/A
+  Errors:
+    • with:TimeoutExpired
+    • baseline:TimeoutExpired
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: FAIL (both runs timed out)
+
+[sql-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 66.7%
+  Baseline Pass Rate: 66.7%
+  Delta: 0.0 (consistent)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS
+
+[stored-proc-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 66.7%
+  Baseline Pass Rate: 100.0%
+  Delta: -33.33% (regression detected)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS (with-spec lower than baseline; investigate)
+
+[python-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 66.7%
+  Baseline Pass Rate: 66.7%
+  Delta: 0.0 (consistent)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS
+
+[scheduler-agent]
+  Status: OK ✅
+  With-Spec Pass Rate: 66.7%
+  Baseline Pass Rate: 66.7%
+  Delta: 0.0 (consistent)
+  Errors: None
+  Runs Per Query: 1
+  Detail Log: runtime/eval/PROJ-101_2026-06-16T101248Z.log
+  Result: PASS
+
+================================================================================
+EVALUATION SUMMARY: PROJ-101
+================================================================================
+
+Total Agents Evaluated: 10
+Passed: 8
+Failed: 2 (impact-analysis-agent timeout, design-agent baseline timeout)
+Errors: 3 (both impact-analysis runs timed out, design-agent baseline timeout)
+
+Pass Rate: 80%
+Regressions Detected: 2 (data-product-agent -33.33%, stored-proc-agent -33.33%)
+
+Recommendation:
+  • Investigate timeouts in impact-analysis-agent
+  • Investigate design-agent baseline timeout
+  • Review regressions in data-product-agent and stored-proc-agent
+  • Recommend optimization passes for agents with consistent 66.7% scores
+
+================================================================================
+END OF EVALUATION LOG
+================================================================================

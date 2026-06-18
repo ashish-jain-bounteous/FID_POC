@@ -1,0 +1,24 @@
+{
+  "skill_name": "triage-agent",
+  "ticket": "PROJ-101",
+  "agent": "triage-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the triage-agent. For ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load), classify the ticket as ISSUE/FEATURE, set severity, list impacted objects, and recommend the downstream route. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "triage-agent correctly classify the ticket as ISSUE/FEATURE, set severity, list impacted objects, and recommend the downstream route for PROJ-101, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-101.json",
+        "specs/PROJ-101/PROJ-101.md"
+      ],
+      "expectations": [
+        "Classifies the verdict as ISSUE",
+        "Assigns severity P2",
+        "Lists impacted objects including FCT_TRADES and LOAD_FCT_TRADES",
+        "recommended_agents lists design-agent first"
+      ]
+    }
+  ]
+}

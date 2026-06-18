@@ -1,0 +1,23 @@
+{
+  "skill_name": "unit-test-agent",
+  "ticket": "PROJ-102",
+  "agent": "unit-test-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the unit-test-agent. For ticket PROJ-102 (FEATURE/P3 \u2014 Add SETTLEMENT_DATE to FCT_TRADES and expose it in VW_DAILY_POSITIONS), create unit test cases based on the spec and code. The Triage block is in tickets/PROJ-102.json and the approved master spec is specs/PROJ-102/PROJ-102.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "unit-test-agent correctly create unit test cases based on the spec and code for PROJ-102, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-102.json",
+        "specs/PROJ-102/PROJ-102.md"
+      ],
+      "expectations": [
+        "Defines unit tests that assert SETTLEMENT_DATE is populated as T+2",
+        "Covers the new column in FCT_TRADES and its exposure in VW_DAILY_POSITIONS",
+        "Makes no changes to source/model files"
+      ]
+    }
+  ]
+}

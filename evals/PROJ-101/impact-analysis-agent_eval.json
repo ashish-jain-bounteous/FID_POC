@@ -1,0 +1,24 @@
+{
+  "skill_name": "impact-analysis-agent",
+  "ticket": "PROJ-101",
+  "agent": "impact-analysis-agent",
+  "routed": true,
+  "with_skill": [],
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "You are the impact-analysis-agent. For ticket PROJ-101 (ISSUE/P2 \u2014 FCT_TRADES shows duplicate trades for some accounts after nightly load), create a detailed forward and backward impact analysis for the change. The Triage block is in tickets/PROJ-101.json and the approved master spec is specs/PROJ-101/PROJ-101.md. Do exactly your stage's job; do not act for other agents.",
+      "expected_output": "impact-analysis-agent correctly create a detailed forward and backward impact analysis for the change for PROJ-101, consistent with the approved spec.",
+      "files": [
+        "tickets/PROJ-101.json",
+        "specs/PROJ-101/PROJ-101.md"
+      ],
+      "expectations": [
+        "Produces both forward and backward impact",
+        "Identifies VW_DAILY_POSITIONS as the impacted downstream consumer",
+        "Names LOAD_FCT_TRADES as the root-cause object",
+        "Makes no changes to any source/model file"
+      ]
+    }
+  ]
+}
