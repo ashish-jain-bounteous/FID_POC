@@ -65,7 +65,26 @@ A ticket id (e.g. `PROJ-101`). Begin by reading `tickets/<id>.json` and its
 ## Objective
 <one paragraph: what this change achieves>
 
+## Assumptiona
+<list any assumptions made in the design; if none, say "none">
+
+## Dependencies
+<list any dependencies on other tickets, or "none">
+
+## Constraints
+<list any constraints on the design, or "none">
+
+
 ## Proposed changes (ALL)
+
+### UI Changes if required
+<list any UI changes, or "none">
+
+<Code changes if required>
+
+<Sql changes if required>
+
+
 | # | File | Change | Rationale |
 |---|------|--------|-----------|
 | 1 | snowflake/procs/load_fct_trades.sql | <exact change> | <why> |
@@ -74,6 +93,9 @@ A ticket id (e.g. `PROJ-101`). Begin by reading `tickets/<id>.json` and its
 
 ## Impacted objects
 <from Triage + any found during design>
+
+## Pros and cons
+<list pros and cons of the proposed changes, or "none">
 
 ## Test plan
 - Unit: <cases>
